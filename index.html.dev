@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saint Francis Portal</title>
+    <script>
+      (function() {
+        var suppress = function(e) {
+          var msg = (e && (e.message || (e.reason && (e.reason.message || String(e.reason))))) || '';
+          if (msg.indexOf('Script error') > -1 || msg.indexOf('SecurityError') > -1 || (e && !e.filename && e.type === 'error')) {
+            if (e && e.stopImmediatePropagation) e.stopImmediatePropagation();
+            if (e && e.stopPropagation) e.stopPropagation();
+            if (e && e.preventDefault) e.preventDefault();
+            console.warn('[Early Safe Intercept] Suppressed cross-origin/iframe script error:', msg);
+            return true;
+          }
+        };
+        window.addEventListener('error', suppress, true);
+        window.addEventListener('unhandledrejection', suppress, true);
+        var originalOnError = window.onerror;
+        window.onerror = function(message, source, lineno, colno, error) {
+          var msg = String(message || '');
+          if (msg.indexOf('Script error') > -1 || msg.indexOf('SecurityError') > -1 || !source) {
+            console.warn('[Early Safe Intercept] Suppressed window.onerror:', msg);
+            return true;
+          }
+          if (originalOnError) {
+            try { return originalOnError.apply(this, arguments); } catch(e) { return true; }
+          }
+          return false;
+        };
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

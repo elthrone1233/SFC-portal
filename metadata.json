@@ -1,0 +1,6 @@
+{
+  "name": "Saint Francis Clinic",
+  "description": "Enterprise-grade Clinic and Field Operations Management System with RBAC, Geotagging, and Payroll calculation",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

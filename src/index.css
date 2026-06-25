@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@keyframes slow-spin-3d {
+  0% {
+    transform: rotateY(0deg) rotateZ(0deg);
+  }
+  50% {
+    transform: rotateY(180deg) rotateZ(5deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateZ(0deg);
+  }
+}
+
+@keyframes slow-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.map-icon-3d-household {
+  perspective: 800px;
+  animation: slow-float 3s ease-in-out infinite;
+}
+
+.map-icon-3d-barangay {
+  perspective: 800px;
+  animation: slow-float 4s ease-in-out infinite;
+}
+
+.map-icon-3d-purok {
+  perspective: 800px;
+  animation: slow-float 3.5s ease-in-out infinite;
+}
+
+.rotate-slow-3d {
+  animation: slow-spin-3d 8s linear infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Custom emerald sidebar scrollbar */
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: rgba(6, 78, 59, 0.25);
+  border-radius: 9999px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #10b981, #059669);
+  border-radius: 9999px;
+  border: 1px solid rgba(6, 78, 59, 0.4);
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #34d399, #10b981);
+}
+
+/* --- Tactile 3D Skeuomorphic Buttons & Pulse Animations --- */
+
+@keyframes pulse-gold-glow {
+  0%, 100% {
+    box-shadow: 0 4px 0px #047857, inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 0 0px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 0px #047857, inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes pulse-3d-ready {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 0 #047857, inset 0 1.5px 2px rgba(255, 255, 255, 0.4), 0 0 12px rgba(16, 185, 129, 0.35);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 0 #047857, inset 0 1.5px 2px rgba(255, 255, 255, 0.5), 0 0 20px rgba(16, 185, 129, 0.6);
+  }
+}
+
+.btn-pulse-save {
+  animation: pulse-3d-ready 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* 3D button class definitions */
+.btn-3d-primary {
+  position: relative;
+  transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: linear-gradient(to bottom, #10b981, #059669);
+  border: 1px solid #047857;
+  color: #ffffff;
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 4px 0 #047857, inset 0 1.5px 2px rgba(255, 255, 255, 0.4), 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d-primary:hover {
+  background: linear-gradient(to bottom, #34d399, #10b981);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #047857, inset 0 1.5px 2px rgba(255, 255, 255, 0.45), 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d-primary:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #047857, inset 0 1.5px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-3d-secondary {
+  position: relative;
+  transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: linear-gradient(to bottom, #475569, #334155);
+  border: 1px solid #1e293b;
+  color: #f8fafc;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 0 #1e293b, inset 0 1.5px 2px rgba(255, 255, 255, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-3d-secondary:hover {
+  background: linear-gradient(to bottom, #64748b, #475569);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #1e293b, inset 0 1.5px 2px rgba(255, 255, 255, 0.25), 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d-secondary:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #1e293b, inset 0 1.5px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-3d-danger {
+  position: relative;
+  transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: linear-gradient(to bottom, #ef4444, #dc2626);
+  border: 1px solid #991b1b;
+  color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 0 #991b1b, inset 0 1.5px 2px rgba(255, 255, 255, 0.4), 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d-danger:hover {
+  background: linear-gradient(to bottom, #f87171, #ef4444);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #991b1b, inset 0 1.5px 2px rgba(255, 255, 255, 0.45), 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d-danger:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #991b1b, inset 0 1.5px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-3d-warning {
+  position: relative;
+  transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: linear-gradient(to bottom, #f59e0b, #d97706);
+  border: 1px solid #92400e;
+  color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 0 #92400e, inset 0 1.5px 2px rgba(255, 255, 255, 0.4), 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d-warning:hover {
+  background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #92400e, inset 0 1.5px 2px rgba(255, 255, 255, 0.45), 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d-warning:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #92400e, inset 0 1.5px 2px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes sweep-shine {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+.animate-shining {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shining::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-25deg);
+  animation: sweep-shine 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  body * {
+    visibility: hidden !important;
+  }
+  #printable-form-area, #printable-form-area *,
+  #printable-dependent-area, #printable-dependent-area * {
+    visibility: visible !important;
+  }
+  #printable-form-area, #printable-dependent-area {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  /* Ensure page breaks nicely if needed */
+  .page-break {
+    page-break-after: always !important;
+    break-after: always !important;
+  }
+}
+
+
